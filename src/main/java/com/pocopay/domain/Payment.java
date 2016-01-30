@@ -7,34 +7,34 @@ import java.time.LocalDateTime;
 
 public class Payment implements Serializable {
 
-    private Integer id;
-    private Integer sourceAccountId;
-    private Integer destinationAccountId;
+    private Long id;
+    private Long sourceAccountId;
+    private Long destinationAccountId;
     private BigDecimal amount;
     private String description;
     private LocalDateTime transactionDate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getSourceAccountId() {
+    public Long getSourceAccountId() {
         return sourceAccountId;
     }
 
-    public void setSourceAccountId(Integer sourceAccountId) {
+    public void setSourceAccountId(Long sourceAccountId) {
         this.sourceAccountId = sourceAccountId;
     }
 
-    public Integer getDestinationAccountId() {
+    public Long getDestinationAccountId() {
         return destinationAccountId;
     }
 
-    public void setDestinationAccountId(Integer destinationAccountId) {
+    public void setDestinationAccountId(Long destinationAccountId) {
         this.destinationAccountId = destinationAccountId;
     }
 

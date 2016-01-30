@@ -9,7 +9,7 @@ import com.pocopay.domain.Account;
 
 public interface AccountMapper {
     @Select("SELECT * FROM account WHERE id = #{accountId}")
-    Account getAccountById(int accountId);
+    Account getAccountById(Long accountId);
 
     @Select("SELECT * FROM account WHERE name = #{name}")
     Account getAccountByName(String name);

@@ -27,7 +27,6 @@ public class RequestFilter implements Filter {
             FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         MDC.put("ipAddress", request.getRemoteAddr());
-        MDC.put("requestPath", request.getRequestURI());
         filterChain.doFilter(servletRequest, servletResponse);
         MDC.clear();
     }

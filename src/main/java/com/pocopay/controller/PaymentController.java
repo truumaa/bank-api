@@ -22,14 +22,14 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public Integer insertPayment(@RequestBody Payment payment) {
-        logger.info("new payment--<><<>--");
+    public Long insertPayment(@RequestBody Payment payment) {
+        logger.info("Request: POST /payment");
         return paymentService.insertPayment(payment);
     }
 
     @RequestMapping(value = "{paymentId}", method = RequestMethod.GET)
-    public Payment getPayment(@PathVariable("paymentId") Integer paymentId) {
-        logger.info("new payment--<><<>--");
+    public Payment getPayment(@PathVariable Integer paymentId) {
+        logger.info("Request: GET /payment/{}", paymentId);
         return paymentService.getPayment(paymentId);
     }
 

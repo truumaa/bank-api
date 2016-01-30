@@ -19,7 +19,7 @@ public class TestHelper {
         assertEquals(payment1.getTransactionDate(), payment.getTransactionDate());
     }
 
-    public static Account getDummyAccount(int id, String name, double amount) {
+    public static Account getDummyAccount(Long id, String name, double amount) {
         Account account = new Account();
         account.setId(id);
         account.setName(name);
@@ -27,13 +27,13 @@ public class TestHelper {
         return account;
     }
 
-    public static Payment getDummyPayment(int id, double amount, String description) {
+    public static Payment getDummyPayment(Long id, double amount, String description) {
         Payment payment = new Payment();
         payment.setId(id);
         payment.setAmount(BigDecimal.valueOf(amount));
         payment.setDescription(description);
-        payment.setSourceAccountId(0);
-        payment.setDestinationAccountId(1);
+        payment.setSourceAccountId(0L);
+        payment.setDestinationAccountId(1L);
         payment.setTransactionDate(Timestamp.valueOf("2016-01-30 10:10:10.0"));
         return payment;
     }

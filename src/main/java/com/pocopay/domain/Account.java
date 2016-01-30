@@ -5,15 +5,15 @@ import java.math.BigDecimal;
 
 public class Account implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String name;
     private BigDecimal amount;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

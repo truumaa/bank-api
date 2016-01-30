@@ -25,19 +25,20 @@ public class AccountController {
     private AccountService accountService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public Integer createAccount(@RequestBody Account account) {
+    public Long createAccount(@RequestBody Account account) {
+        logger.info("Request: POST /account");
         return accountService.insertAccount(account);
     }
 
     @RequestMapping(value = "{accountId}", method = RequestMethod.GET)
-    public Account getAccount(@PathVariable("accountId") Integer accountId) {
-        logger.info("getAccountById-->--");
+    public Account getAccount(@PathVariable Long accountId) {
+        logger.info("Request: GET /account/{}", accountId);
         return accountService.getAccount(accountId);
     }
 
     @RequestMapping(value = "{accountId}/history", method = RequestMethod.GET)
-    public List<Payment> getAccountHistory(@PathVariable("accountId") Integer accountId) {
-        logger.info("getAccountHistory-->--");
+    public List<Payment> getAccountHistory(@PathVariable Long accountId) {
+        logger.info("Request: GET /account/{}/history", accountId);
         return accountService.getAccountHistory(accountId);
     }
 

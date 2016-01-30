@@ -25,11 +25,11 @@ public class TestConstants {
     public static final String PAYMENT_RESULTS = "{\"id\":1,\"sourceAccountId\":0,\"destinationAccountId\":1,\"amount\":437"
             + ".35," + "\"description\":\"transfer2\",\"transactionDate\":";
 
-    public static Integer CORRECT_ACCOUNT_ID = 1;
-    public static Integer INVALID_ACCOUNT_ID = 999;
-    public static Integer NO_HISTORY_ACCOUNT_ID = 10;
+    public static Long CORRECT_ACCOUNT_ID = 1L;
+    public static Long INVALID_ACCOUNT_ID = 999L;
+    public static Long NO_HISTORY_ACCOUNT_ID = 10L;
 
-    public static Integer CORRECT_PAYMENT_ID = 1;
-    public static Integer INVALID_PAYMENT_ID = 999;
+    public static Long CORRECT_PAYMENT_ID = 1L;
+    public static Long INVALID_PAYMENT_ID = 999L;
 
 }

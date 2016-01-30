@@ -19,6 +19,6 @@ public interface PaymentMapper {
     void insertPayment(Payment payment);
 
     @Select("SELECT * FROM payment WHERE sourceAccountId = #{accountId}")
-    List<Payment> getPaymentsBySourceAccountId(Integer accountId);
+    List<Payment> getPaymentsBySourceAccountId(Long accountId);
 
 }
