@@ -1,0 +1,27 @@
+<mapper namespace="com.pocopay.persistence.AccountMapper">
+
+    <cache/>
+
+    <select id="getAccount" resultType="Account">
+        SELECT
+        id,
+        name
+        FROM account
+        WHERE id = #{accountId}
+    </select>
+
+    <insert id="insertAccount" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO mytable (raz,dva,tri )
+        VALUES
+        <foreach collection="cores" item="core" separator=",">
+            (#{core.raz}, #{core.dva}, #{core.tri})
+        </foreach>
+    </insert>
+
+
+    <select id="insertAccount" resultType="Account">
+        INSERT INTO account (name)
+        VALUES (#{name})
+    </select>
+
+</mapper>

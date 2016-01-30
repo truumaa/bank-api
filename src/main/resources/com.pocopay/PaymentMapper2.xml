@@ -1,0 +1,23 @@
+<mapper namespace="com.pocopay.persistence.PaymentMapper">
+
+    <cache/>
+
+    <select id="getPaymentById" resultType="Payment">
+        SELECT
+        id, sourceAccountId, destinationAccountId, amount, description, transactionDate
+        FROM payment
+        WHERE id = #{paymentId}
+    </select>
+
+    <select id="insertPayment" resultType="Payment">
+        INSERT INTO payment (sourceAccountId, destinationAccountId, amount, description, transactionDate)
+        VALUES (#{sourceAccountId}, #{destinationAccountId}, #{amount}, #{description}, now())
+    </select>
+
+    <select id="getPaymentBySourceAccountId" resultType="Payment">
+        SELECT *
+        FROM payment
+        WHERE sourceAccountId = #{accountId}
+    </select>
+
+</mapper>
