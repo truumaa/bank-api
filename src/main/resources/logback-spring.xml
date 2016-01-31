@@ -24,8 +24,6 @@
         </encoder>
     </appender>
 
-    <!--<logger name="com.pocopay" level="DEBUG"/>-->
-
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>

@@ -1,24 +1,30 @@
-= Mini-pocpay
-This is a mini banking application rest backend.
-The project uses: Gradle + Java8 + Spring Boot
-For testing: HSQLDB + JUnit4 + REST-assured
+= Mini-pocopay
+
+This is a REST API backend for mini banking application. +
+The project uses: *Gradle* + *Java8* + *Spring Boot* + *HSQLDB* + *MyBatis*. +
+For testing: *JUnit4* + *REST-assured*
 
 == Getting started
-*Building* `$ gradle build`
-*Running* `$ java -jar build/libs/mini-pocopay-1.0-SNAPSHOT.jar`
-
-== Testing
-To run unittests: `$ gradle test`
-To run integrationtests: `$ gradle test`
+*Building and running*
+----
+$ gradle bootRun
+----
+*Unit and integration testing*
+----
+$ gradle test
+----
 
 == Rest API
 === Account
-*Create new account* POST:_/account_ `{"name":"Account name"}` returns {accountId}
+*Create new account* POST: _/account_ `{"name":"Account name"}` returns `accountId` +
+*Get account by id* GET: _/account/{accountId}_ returns account `{"id":1,"name":"Existing Account","amount":3000.55}` +
+*Get account history* GET: _/account/{accountId}/history_ returns account hirstory `[{"id":3,"sourceAccountId":1,"destinationAccountId":0,"amount":100.25,"description":"transfer4","transactionDate":"2015-01-28T15:04:10"}]`
 
-*Get account by id* GET:_/account/{accountId}_ returns account `{"id":1,"name":"Existing Account","amount":3000.55}`
-
-*Get account history* GET:_/account/{accountId}/history_ returns account hirstory `[{"id":3,"sourceAccountId":1,"destinationAccountId":0,"amount":100.25,"description":"transfer4","transactionDate":"2015-01-28T15:04:10"}]`
 === Payment
-*Insert new payment* POST:_/payment_ {} returns {paymentId}
+*Insert new payment* POST: _/payment_ {} returns `paymentId` +
+*Get payment by id* GET: _/payment/{paymentId}_ returns payment `{"id": 1,"sourceAccountId": 0,"destinationAccountId": 1,"amount": 437.35,"description": "transfer2","transactionDate": "2015-01-28T15:02:00"}`
 
-*Get payment by id* GET:_/payment/{paymentId}_ returns payment `{"id": 1,"sourceAccountId": 0,"destinationAccountId": 1,"amount": 437.35,"description": "transfer2","transactionDate": "2015-01-28T15:02:00"}`
+== Additional notes
+Configuration can be done in *application.yaml*. +
+Logging level and policies can be changed in *logback-spring.xml*. +
+Integration tests use HSQLDB.
