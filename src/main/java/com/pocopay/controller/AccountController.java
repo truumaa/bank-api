@@ -2,6 +2,8 @@ package com.pocopay.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ public class AccountController {
     private AccountService accountService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public Long createAccount(@RequestBody Account account) {
+    public Long createAccount(@RequestBody @Valid Account account) {
         logger.info("Request: POST /account");
         return accountService.insertAccount(account);
     }

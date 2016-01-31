@@ -27,7 +27,6 @@ public class TestConstants {
 
     public static Long CORRECT_ACCOUNT_ID = 1L;
     public static Long INVALID_ACCOUNT_ID = 999L;
-    public static Long NO_HISTORY_ACCOUNT_ID = 10L;
 
     public static Long CORRECT_PAYMENT_ID = 1L;
     public static Long INVALID_PAYMENT_ID = 999L;

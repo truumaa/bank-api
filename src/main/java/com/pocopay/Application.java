@@ -14,7 +14,7 @@ public class Application {
 
 
     public static void main(String[] args) {
-        logger.debug("---algus---");
+        logger.debug("Mini-pocopay started");
         SpringApplication.run(Application.class, args);
     }
 }

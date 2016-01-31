@@ -1,6 +1,5 @@
 INSERT INTO account VALUES (0, 'account1', 6000.13);
 INSERT INTO account VALUES (1, 'Existing Account', 3000.55);
-INSERT INTO account VALUES (10, 'accountWithNoHistory', 3000.55);
 
 INSERT INTO payment VALUES (0, 0, 1, 500.60, 'transfer1', '2015-01-28 15:01:00');
 INSERT INTO payment VALUES (1, 0, 1, 437.35, 'transfer2', '2015-01-28 15:02:00');

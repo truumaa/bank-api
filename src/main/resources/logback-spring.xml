@@ -9,11 +9,11 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/log.log</file>
+        <file>logs/mini-pocopay.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>mini-pocopay.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/mini-pocopay.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
 
         <encoder>

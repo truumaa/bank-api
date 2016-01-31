@@ -87,13 +87,5 @@ public class AccountControllerIntegrationTest extends RestIntegrationTest {
                 .statusCode(SC_BAD_REQUEST);
     }
 
-    @Test
-    public void getAccountHistory_ShouldReturnErrorWhenNoHistory() {
-        given().contentType(ContentType.JSON)
-                .when()
-                .get(TestConstants.ACCOUNT_HISTORY_URL, TestConstants.NO_HISTORY_ACCOUNT_ID)
-                .then()
-                .statusCode(SC_BAD_REQUEST);
-    }
 
 }

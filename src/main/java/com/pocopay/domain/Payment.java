@@ -5,12 +5,20 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Payment implements Serializable {
 
     private Long id;
+    @NotNull
     private Long sourceAccountId;
+    @NotNull
     private Long destinationAccountId;
+    @NotNull
     private BigDecimal amount;
+    @NotNull
+    @Size(min = 1, max = 255)
     private String description;
     private LocalDateTime transactionDate;
 

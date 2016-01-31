@@ -48,14 +48,6 @@ public class AccountServiceTest {
         accountService.getAccount(0L);
     }
 
-    @Test(expected = BadRequestException.class)
-    public void getAccountHistory_shouldReturnErrorWhenNoHistory() {
-        Account account1 = TestHelper.getDummyAccount(1L, "name", 34.56);
-        when(accountMapper.getAccountById(1L)).thenReturn(account1);
-        when(paymentMapper.getPaymentsBySourceAccountId(anyLong())).thenReturn(new ArrayList<>());
-        accountService.getAccountHistory(1L);
-    }
-
     @Test
     public void getAccountHistory_shouldReturnAccountHistory() {
         Account account1 = TestHelper.getDummyAccount(1L, "name", 34.56);

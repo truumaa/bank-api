@@ -1,7 +1,7 @@
 package com.pocopay;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,22 +12,24 @@ import com.pocopay.exception.BadRequestException;
 import com.pocopay.exception.ForbiddenException;
 
 @ControllerAdvice
-public class RestErrorHandler {
+public class ErrorHandler {
 
+    private static final Logger logger = LoggerFactory.getLogger(ErrorHandler.class);
 
     @ExceptionHandler(ForbiddenException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ResponseBody
-    public RestErrorWrapper handleForbiddenException(ForbiddenException e, HttpServletRequest request) {
-        //logCondition(e, request);
-        return new RestErrorWrapper(e.getMessage());
+    public String handleForbiddenException(ForbiddenException e) {
+        logger.info("ForbiddenException: {}", e.getMessage());
+        return e.getExceptionCode().toString();
     }
 
     @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public RestErrorWrapper handleForbiddenException(BadRequestException e, HttpServletRequest request) {
-        //logCondition(e, request);
-        return new RestErrorWrapper(e.getMessage());
+    public String handleForbiddenException(BadRequestException e) {
+        logger.info("BadRequestException: {}", e.getMessage());
+        return e.getExceptionCode().toString();
     }
+
 }

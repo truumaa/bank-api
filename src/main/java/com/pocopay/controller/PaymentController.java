@@ -1,5 +1,7 @@
 package com.pocopay.controller;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public Long insertPayment(@RequestBody Payment payment) {
+    public Long insertPayment(@RequestBody @Valid Payment payment) {
         logger.info("Request: POST /payment");
         return paymentService.insertPayment(payment);
     }

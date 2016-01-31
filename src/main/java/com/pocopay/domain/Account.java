@@ -3,9 +3,14 @@ package com.pocopay.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Account implements Serializable {
 
     private Long id;
+    @NotNull
+    @Size(min = 1, max = 255)
     private String name;
     private BigDecimal amount;
 

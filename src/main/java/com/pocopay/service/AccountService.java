@@ -1,6 +1,9 @@
 package com.pocopay.service;
 
+import static com.pocopay.exception.ForbiddenException.ExceptionCode;
+
 import java.math.BigDecimal;
+import java.text.MessageFormat;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -22,7 +25,7 @@ public class AccountService {
     private static final Logger logger = LoggerFactory.getLogger(AccountService.class);
 
     @Value("${config.defaultAmount}")
-    private double defaultAmount;
+    private BigDecimal defaultAmount;
 
     @Autowired
     private AccountMapper accountMapper;
@@ -31,38 +34,31 @@ public class AccountService {
     private PaymentMapper paymentMapper;
 
     public synchronized Long insertAccount(Account account) {
-        if (account.getName().isEmpty()) {
-            logger.info("BadRequestException: Account name missing");
-            throw new BadRequestException("Account name missing");
-        }
-
         if (accountMapper.getAccountByName(account.getName()) != null) {
-            logger.info("ForbiddenException: Account name already exists Name:{}", account.getName());
-            throw new ForbiddenException("Account name already exists");
+            throw new ForbiddenException(
+                    ExceptionCode.ACCOUNT_NAME_EXISTS, MessageFormat.format(
+                    "Account Name:{0} already exists ", account.getName()));
         }
 
-        account.setAmount(BigDecimal.valueOf(defaultAmount));
+        account.setAmount(defaultAmount);
         accountMapper.insertAccount(account);
         logger.info("New Account ID:{} and Name:{} created", account.getId(), account.getName());
         return account.getId();
     }
 
     public List<Payment> getAccountHistory(Long accountId) {
-        //Validate that account exists
-        getAccount(accountId);
-        List<Payment> payments = paymentMapper.getPaymentsBySourceAccountId(accountId);
-        if (payments.isEmpty()) {
-            logger.info("BadRequestException: No payment history for ID:{} account", accountId);
-            throw new BadRequestException("No payment history for an account");
-        }
-        return payments;
+        verifyAccountExistence(accountId);
+        return paymentMapper.getPaymentsBySourceAccountId(accountId);
     }
+
+    private void verifyAccountExistence(Long accountId) {getAccount(accountId);}
 
     public Account getAccount(Long accountId) {
         Account account = accountMapper.getAccountById(accountId);
         if (account == null) {
-            logger.info("BadRequestException: Invalid account ID:{} requested", accountId);
-            throw new BadRequestException("Invalid account number");
+            throw new BadRequestException(
+                    BadRequestException.ExceptionCode.INVALID_ACCOUNT_ID, MessageFormat.format(
+                    "Invalid account ID:{0} ", accountId));
         }
         return account;
     }
