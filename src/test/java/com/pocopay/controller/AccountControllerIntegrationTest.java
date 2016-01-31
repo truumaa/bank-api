@@ -25,8 +25,6 @@ public class AccountControllerIntegrationTest extends RestIntegrationTest {
                 .post(TestConstants.ACCOUNT_URL)
                 .then()
                 .statusCode(SC_OK);
-        //.body(Matchers.any(Integer.class));
-
     }
 
     @Test

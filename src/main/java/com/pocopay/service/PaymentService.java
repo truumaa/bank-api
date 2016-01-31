@@ -22,7 +22,6 @@ public class PaymentService {
 
     private static final Logger logger = LoggerFactory.getLogger(PaymentService.class);
 
-
     @Autowired
     private AccountMapper accountMapper;
 
@@ -48,7 +47,6 @@ public class PaymentService {
         paymentMapper.insertPayment(payment);
         logger.info("New Payment with ID:{} created", payment.getId());
         return payment.getId();
-
     }
 
     private void validateThatAmountIsPositive(Payment payment) {

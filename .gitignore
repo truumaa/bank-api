@@ -5,8 +5,6 @@ build
 logs
 *.iml
 
-
-
 # Ignore Gradle GUI config
 gradle-app.setting
 

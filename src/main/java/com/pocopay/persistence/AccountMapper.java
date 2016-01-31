@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Update;
 import com.pocopay.domain.Account;
 
 public interface AccountMapper {
+
     @Select("SELECT * FROM account WHERE id = #{accountId}")
     Account getAccountById(Long accountId);
 

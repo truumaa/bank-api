@@ -24,10 +24,7 @@
         </encoder>
     </appender>
 
-
-    <!--<include resource="org/springframework/boot/logging/logback/defaults.xml"/>-->
-    <logger name="com.pocopay" level="INFO">
-    </logger>
+    <!--<logger name="com.pocopay" level="DEBUG"/>-->
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
