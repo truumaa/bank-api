@@ -70,7 +70,8 @@ public class PaymentServiceTest {
     public void insertPayment_shouldThrowErrorWhenInvalidAccountNumber() {
         Account account1 = TestHelper.getDummyAccount(0L, "Account1", 554.32);
         when(accountService.getAccount(0L)).thenReturn(account1);
-        when(accountService.getAccount(1L)).thenThrow(new BadRequestException(
+        when(accountService.getAccount(1L)).thenThrow(
+                new BadRequestException(
                         BadRequestException.ExceptionCode.INVALID_ACCOUNT_ID, MessageFormat.format(
                         "Invalid account ID:{0} ", 999L)));
 

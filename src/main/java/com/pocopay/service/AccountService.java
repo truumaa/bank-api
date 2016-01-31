@@ -34,24 +34,27 @@ public class AccountService {
     private PaymentMapper paymentMapper;
 
     public synchronized Long insertAccount(Account account) {
-        if (accountMapper.getAccountByName(account.getName()) != null) {
-            throw new ForbiddenException(
-                    ExceptionCode.ACCOUNT_NAME_EXISTS, MessageFormat.format(
-                    "Account Name:{0} already exists ", account.getName()));
-        }
-
+        validateAccountNonExistence(account);
         account.setAmount(defaultAmount);
         accountMapper.insertAccount(account);
         logger.info("New Account ID:{} and Name:{} created", account.getId(), account.getName());
         return account.getId();
     }
 
+    private void validateAccountNonExistence(Account account) {
+        if (accountMapper.getAccountByName(account.getName()) != null) {
+            throw new ForbiddenException(
+                    ExceptionCode.ACCOUNT_NAME_EXISTS, MessageFormat.format(
+                    "Account Name:{0} already exists ", account.getName()));
+        }
+    }
+
     public List<Payment> getAccountHistory(Long accountId) {
-        verifyAccountExistence(accountId);
+        validateAccountExistence(accountId);
         return paymentMapper.getPaymentsBySourceAccountId(accountId);
     }
 
-    private void verifyAccountExistence(Long accountId) {getAccount(accountId);}
+    private void validateAccountExistence(Long accountId) {getAccount(accountId);}
 
     public Account getAccount(Long accountId) {
         Account account = accountMapper.getAccountById(accountId);

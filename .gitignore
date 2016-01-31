@@ -1,7 +1,11 @@
 .gradle
-build/
+build
+!build\libs\mini-pocopay-1.0-SNAPSHOT.jar
 .idea
 logs
+*.iml
+
+
 
 # Ignore Gradle GUI config
 gradle-app.setting
